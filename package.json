@@ -5,6 +5,7 @@
     "build": "node build.js",
     "deploy": "npm run build && wrangler deploy",
     "dev": "npm run build && wrangler dev",
+    "postinstall": "npm run build",
     "start": "node server.js"
   },
   "engines": {
