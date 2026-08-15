@@ -21,6 +21,8 @@ button { font: inherit; }
 .nav nav { display: flex; gap: 32px; margin-left: auto; margin-right: 8px; font-size: 13px; font-weight: 600; }
 .nav nav a, footer a { transition: opacity .2s; }
 .nav nav a:hover, footer a:hover { opacity: .58; }
+.language-toggle { padding: 5px 7px; border: 1px solid #aaa7a0; border-radius: 5px; background: transparent; font-size: 10px; font-weight: 700; cursor: pointer; }
+.language-toggle:hover { background: #111; color: white; border-color: #111; }
 .button { min-height: 48px; padding: 0 20px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; gap: 14px; border: 1px solid transparent; font-size: 13px; font-weight: 700; cursor: pointer; transition: transform .2s, background .2s; }
 .button:hover { transform: translateY(-2px); }
 .button-dark { color: white; background: var(--ink); }
@@ -74,7 +76,7 @@ blockquote { margin: 18px 0 0; padding: 16px; background: white; border-radius: 
 .book-section { margin: 0 auto; width: min(1260px, calc(100% - 24px)); padding: 70px 0 28px; color: white; border-radius: var(--radius); background: radial-gradient(circle at 80% 5%, #7046da 0, transparent 32%), linear-gradient(145deg, #1b1726, #101114 68%); overflow: hidden; }
 .book-section .eyebrow { color: #bca4ff; }
 .book-section .shell > p:not(.eyebrow) { color: #aaa8af; font-size: 13px; }
-.experience-grid { margin-top: 34px; display: grid; grid-template-columns: 1.22fr repeat(4, 1fr); gap: 12px; }
+.experience-grid { margin-top: 34px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .experience { min-width: 0; height: 270px; position: relative; border-radius: 11px; overflow: hidden; background: #242329; }
 .experience img { height: 50%; object-fit: cover; filter: saturate(.78); transition: transform .5s; }
 .experience:hover img { transform: scale(1.06); }
@@ -135,6 +137,7 @@ dialog p { color: var(--muted); line-height: 1.6; }
   .nav nav { display: none; }
   .nav nav.mobile-open { display: flex; position: absolute; top: 68px; left: 0; right: 0; margin: 0; padding: 22px; flex-direction: column; gap: 18px; background: rgba(248,246,241,.96); border: 1px solid #dedad3; border-radius: 14px; box-shadow: 0 18px 40px rgba(0,0,0,.12); backdrop-filter: blur(14px); }
   .nav > .button { display: none; }
+  .language-toggle { margin-left: auto; }
   .menu { display: block; }
   .hero-inner { grid-template-columns: 1fr; }
   .hero-copy { padding: 58px 0 20px; }
@@ -143,7 +146,6 @@ dialog p { color: var(--muted); line-height: 1.6; }
   .hero-visual > img { width: 100%; mask-image: linear-gradient(to bottom, transparent 0, black 18%); }
   .steps { gap: 24px; }
   .experience-grid { grid-template-columns: repeat(2, 1fr); }
-  .experience:last-child { grid-column: span 2; }
   .built { grid-template-columns: 1fr; }
   .built-copy { padding: 45px 0 0; }
 }
