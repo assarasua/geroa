@@ -138,7 +138,15 @@
           <div>
             <p class="eyebrow">Life is too short for “your call is important to us”</p>
             <h2>Send us the problem.<br />Get on with your life.</h2>
-            <a class="button button-white" href="mailto:hello@geroa.ai">Get early access <span>→</span></a>
+            <form class="signup-form" novalidate>
+              <label for="subscriber-email">Get Geroa before everyone else.</label>
+              <div class="signup-row">
+                <input id="subscriber-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required />
+                <input class="signup-honeypot" name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <button class="button button-white" type="submit">Subscribe <span>→</span></button>
+              </div>
+              <p class="signup-status" role="status" aria-live="polite"></p>
+            </form>
             <small>No surprise charges. No unauthorized changes. Your yes is the final step.</small>
           </div>
           <div class="messages">
@@ -153,7 +161,7 @@
     <footer>
       <div class="shell footer-top">
         <div><a class="brand brand-light" href="#"><span class="brand-mark">✦</span> geroa ai</a><p>Your personal AI representative. For what’s next.</p><small>Negotiations · Providers · Bookings · Payments</small></div>
-        <a class="button button-purple" href="#access">Get early access <span>→</span></a>
+        <a class="button button-purple" href="#access">Subscribe <span>→</span></a>
       </div>
       <div class="shell footer-bottom"><nav><a href="#how">How it works</a><a href="#book">What Geroa handles</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav><span>© 2026 Geroa AI. All rights reserved.</span></div>
     </footer>

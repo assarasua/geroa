@@ -111,6 +111,16 @@ blockquote { margin: 18px 0 0; padding: 16px; background: white; border-radius: 
 .cta-inner { display: grid; grid-template-columns: 55% 45%; align-items: center; }
 .cta .eyebrow { color: #d8c9ff; }
 .cta small { display: block; margin-top: 14px; color: rgba(255,255,255,.7); font-size: 10px; }
+.signup-form { max-width: 510px; margin-top: 24px; }
+.signup-form > label { display: block; margin-bottom: 9px; font-size: 12px; font-weight: 700; }
+.signup-row { display: flex; gap: 9px; }
+.signup-row input { min-width: 0; flex: 1; min-height: 48px; padding: 0 16px; border: 1px solid rgba(255,255,255,.55); border-radius: 9px; outline: 0; color: white; background: rgba(15,15,20,.72); backdrop-filter: blur(12px); font: 500 13px "DM Sans", sans-serif; }
+.signup-row input::placeholder { color: rgba(255,255,255,.58); }
+.signup-row input:focus { border-color: white; box-shadow: 0 0 0 3px rgba(255,255,255,.15); }
+.signup-row .signup-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.signup-row .button-white { margin-top: 0; white-space: nowrap; }
+.signup-status { min-height: 18px; margin: 8px 0 0; color: #e0d2ff; font-size: 11px; }
+.signup-status.error { color: #ffd2d2; }
 .messages { justify-self: end; width: min(100%, 400px); display: grid; gap: 8px; }
 .message { width: 88%; padding: 13px 16px; border-radius: 11px; backdrop-filter: blur(12px); box-shadow: 0 12px 30px rgba(0,0,0,.18); }
 .message span { font-size: 10px; font-weight: 700; }
@@ -168,6 +178,7 @@ dialog p { color: var(--muted); line-height: 1.6; }
   .features { grid-template-columns: repeat(2, 1fr); }
   .cta { padding: 70px 0; }
   .cta-inner { grid-template-columns: 1fr; gap: 52px; }
+  .signup-row { align-items: stretch; flex-direction: column; }
   .messages { justify-self: stretch; }
   .footer-top, .footer-bottom { align-items: flex-start; flex-direction: column; gap: 28px; }
   .footer-bottom nav { flex-wrap: wrap; }

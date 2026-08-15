@@ -137,7 +137,13 @@ Object.assign(locales.es.translations, {
   "Good. I’m calling retention and checking two competing offers. Keep your number, same data or better.": "Perfecto. Llamo a retenciones y comparo dos ofertas rivales. Conservamos tu número y los mismos datos o más.",
   "They folded: €18 less per month, same data, no new lock-in. Say yes and I’ll close it.": "Han cedido: 18 € menos al mes, los mismos datos y sin nueva permanencia. Di que sí y lo cierro.",
   "Give us the headache.": "Pásanos el marrón.",
-  "One message starts the calls, comparisons, negotiations, forms, bookings, and follow-ups. You return when there’s a decision worth making.": "Un mensaje pone en marcha llamadas, comparaciones, negociaciones, formularios, reservas y seguimiento. Tú vuelves cuando hay una decisión que merece tu atención."
+  "One message starts the calls, comparisons, negotiations, forms, bookings, and follow-ups. You return when there’s a decision worth making.": "Un mensaje pone en marcha llamadas, comparaciones, negociaciones, formularios, reservas y seguimiento. Tú vuelves cuando hay una decisión que merece tu atención.",
+  "Get Geroa before everyone else.": "Ten Geroa antes que nadie.",
+  "Subscribe": "Suscríbete",
+  "Enter a valid email. We’re good, but we can’t guess it.": "Escribe un email válido. Somos buenos, pero no podemos adivinarlo.",
+  "You’re in. We’ll email you when your representative is ready.": "Estás dentro. Te escribiremos cuando tu representante esté listo.",
+  "Something went wrong. Try again in a moment.": "Algo ha fallado. Inténtalo de nuevo en un momento.",
+  "Subscribing…": "Apuntándote…"
 });
 
 function textNodes(root) {
@@ -175,6 +181,53 @@ function setLanguage(code) {
 
 languageToggle.addEventListener("click", () => {
   setLanguage(document.documentElement.lang === "es" ? "en" : "es");
+});
+
+const signupForm = document.querySelector(".signup-form");
+const signupStatus = document.querySelector(".signup-status");
+
+signupForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const emailInput = signupForm.elements.email;
+  const submitButton = signupForm.querySelector('button[type="submit"]');
+  const locale = locales[document.documentElement.lang] || locales.en;
+
+  if (!emailInput.validity.valid) {
+    signupStatus.textContent = locale.translations["Enter a valid email. We’re good, but we can’t guess it."]
+      || "Enter a valid email. We’re good, but we can’t guess it.";
+    signupStatus.classList.add("error");
+    emailInput.focus();
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = locale.translations["Subscribing…"] || "Subscribing…";
+  signupStatus.textContent = "";
+  signupStatus.classList.remove("error");
+
+  try {
+    const response = await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: emailInput.value,
+        company: signupForm.elements.company.value,
+      }),
+    });
+
+    if (!response.ok) throw new Error("subscription_failed");
+
+    signupStatus.textContent = locale.translations["You’re in. We’ll email you when your representative is ready."]
+      || "You’re in. We’ll email you when your representative is ready.";
+    signupForm.reset();
+  } catch {
+    signupStatus.textContent = locale.translations["Something went wrong. Try again in a moment."]
+      || "Something went wrong. Try again in a moment.";
+    signupStatus.classList.add("error");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.innerHTML = `${locale.translations.Subscribe || "Subscribe"} <span>→</span>`;
+  }
 });
 
 demoButton.addEventListener("click", () => dialog.showModal());
