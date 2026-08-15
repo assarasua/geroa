@@ -1,5 +1,4 @@
 const dialog = document.querySelector("#demo-dialog");
-const demoButton = document.querySelector(".demo-button");
 const closeButton = document.querySelector(".dialog-close");
 const menuButton = document.querySelector(".menu");
 const nav = document.querySelector(".nav nav");
@@ -79,7 +78,6 @@ Object.assign(locales.es.translations, {
   "phone call.": "de Geroa.",
   "Bills creeping up? Refund going nowhere? Need a booking that takes six calls and a deposit? Drop it on Geroa. Your representative calls, argues, compares, books, and follows up. You step in only to approve.": "¿Te han vuelto a subir la factura? ¿Ese reembolso no llega? ¿La reserva exige seis llamadas y una señal? Pásaselo a Geroa. Tu representante llama, insiste, compara, reserva y hace seguimiento. Tú solo entras para aprobar.",
   "Hand over the headache": "Pásanos el marrón",
-  "See Geroa in action": "Mira a Geroa en acción",
   "10,000+ people already stopped doing it themselves": "Más de 10.000 personas ya han dejado de hacerlo todo ellas",
   "You say go.": "Tú das el sí.",
   "We get it done.": "Nosotros lo hacemos.",
@@ -230,7 +228,6 @@ signupForm.addEventListener("submit", async (event) => {
   }
 });
 
-demoButton.addEventListener("click", () => dialog.showModal());
 closeButton.addEventListener("click", () => dialog.close());
 dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
