@@ -3,3 +3,6 @@ assets/reference.png
 .env
 .env.local
 .env.*.local
+dist/
+node_modules/
+.wrangler/
